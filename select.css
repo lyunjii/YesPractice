@@ -271,7 +271,7 @@ ul {
   padding: 5px 6px;
   border-top: #707070 1px solid;
 }
-#image_vote {
+.form-check-input[type="checkbox"] {
   position: absolute;
   top: 7px;
   left: 8.5px;
@@ -281,7 +281,7 @@ ul {
   border-radius: 2px;
   margin: 0px;
 }
-#image_vote:checked {
+.form-check-input[type="checkbox"]:checked {
   background-color: #ff8836;
   border-color: #ff8836;
 }
@@ -291,11 +291,15 @@ ul {
   border: #707070 1px solid;
   border-radius: 10px;
   position: relative;
-  margin-bottom: 20px;
+  margin: 5px;
 }
 .voteList {
+  width: 100%;
+  height: 100%;
   overflow-y: scroll;
-  padding: 5px 6px;
+  display: flex;
+  justify-content: center;
+  flex-flow: wrap;
 }
 .voteList::-webkit-scrollbar {
   display: none;
