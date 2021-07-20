@@ -61,7 +61,7 @@
             <div class="upTxt">사진 업로드 하기</div>
           </label>
           <input class="d-none" type="file" name="uploadPicture" id="uploadPicture" 
-          accept="image/*, ;capture=camera" onchange="load_image(this)">
+          accept="image/*, ;capture=camera" onclick="this.value=null;" onchange="load_image(this)">
         </div>
         <div class="showPic"></div>
         <div class="result"></div>
@@ -87,7 +87,7 @@
     <div class="tab-pane" id="pills-vote" role="tabpanel" aria-labelledby="pills-vote-tab">
       <section class="orangebox">
         
-        <ul class="voteList voteList_small">
+        <ul class="voteList">
           <li class="voteElement">
             <div class="voteImage">
               <img src="img/profile_img.jpg" alt="">
@@ -204,7 +204,7 @@
           </li>
 
         </ul>
-        
+
       </section>
     </div>
     <div class="tab-pane" id="pills-show" role="tabpanel" aria-labelledby="pills-show-tab">
@@ -223,9 +223,11 @@
   <script src="https://cdnjs.cloudflare.com/ajax/libs/cropperjs/1.5.12/cropper.js" integrity="sha512-ZK6m9vADamSl5fxBPtXw6ho6A4TuX89HUbcfvxa2v2NYNT/7l8yFGJ3JlXyMN4hlNbz0il4k6DvqbIW5CCwqkw==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
   <script src="select.js" async defer></script>
 
-  <canvas id="Canvas1"   width="1920" height="1080" style="border:1px solid;display: none;">
+  <canvas id="Canvas1"   width="1463" height="823" style="border:0px solid;display: none;">
   </canvas>
-  <canvas id="Canvas2"   width="1920" height="1080" style="border:1px solid;display: none;">
+  <canvas id="Canvas2"   width="1463" height="823" style="border:0px solid;display: none;">
+  </canvas>
+  <canvas id="thumbnail"   width="343" height="191" style="border:0px solid;display: none;">
   </canvas>
 </body>
 </html>
