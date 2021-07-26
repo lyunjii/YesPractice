@@ -26,11 +26,11 @@ function pointermove_handler(ev) {
     const curDiff = Math.abs(evCache[0].clientX - evCache[1].clientX);
 
     if (prevDiff > 0) {
-      if (curDiff > prevDiff + 5) {
+      if (curDiff > prevDiff) {
         // Zoom in(두 점이 멀어질 때) 발생하는 이벤트
         !voteList.classList.contains('zoom') && voteList.classList.add('zoom');
       }
-      if (curDiff < prevDiff + 5) {
+      if (curDiff < prevDiff) {
         // Zoom out시 발생하는 이벤트
         voteList.classList.contains('zoom') && voteList.classList.remove('zoom');
       }
