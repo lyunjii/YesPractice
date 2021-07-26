@@ -32,8 +32,7 @@ function pointermove_handler(ev) {
       }
       if (curDiff < prevDiff) {
         // Zoom out시 발생하는 이벤트
-        voteList.classList.contains('zoom') &&
-          voteList.classList.remove('zoom');
+        voteList.classList.contains('zoom') && voteList.classList.remove('zoom');
       }
     }
 

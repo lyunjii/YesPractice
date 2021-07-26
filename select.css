@@ -304,7 +304,6 @@ ul {
 .voteList {
   display: flex;
   flex-flow: wrap;
-  margin-right: 11px;
 }
 .voteListBox {
   width: 333px;
@@ -375,6 +374,9 @@ ul {
   width: 583px;
   height: 651px;
 }
+.pcVote .voteList {
+  margin-right: 11px;
+}
 .pcVote::-webkit-scrollbar {
   display: inline;
   width: 16px;
@@ -400,6 +402,9 @@ ul {
 }
 
 /* pinch event styling */
+.voteList.zoom {
+  margin: 0px;
+}
 .voteList.zoom > .voteElement {
   width: 166.5px;
   height: 130px;
