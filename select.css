@@ -413,11 +413,11 @@ ul {
   margin: 0px;
 }
 .voteList.zoom > .voteElement {
-  width: 166.5px;
+  width: 166px;
   height: 130px;
 }
 .voteList.zoom > .voteElement > .voteImage {
-  width: 164.5px;
+  width: 165px;
   height: 94px;
 }
 .voteList.zoom > .voteElement > .imageInfo {
