@@ -400,15 +400,12 @@ ul {
 }
 
 /* pinch event styling */
-
 .voteList.zoom > .voteElement {
-  width: 166px;
+  width: 166.5px;
   height: 130px;
-  border: #707070 1px solid;
-  position: relative;
 }
 .voteList.zoom > .voteElement > .voteImage {
-  width: 166px;
+  width: 164.5px;
   height: 94px;
 }
 .voteList.zoom > .voteElement > .imageInfo {
