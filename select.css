@@ -298,12 +298,15 @@ ul {
 .voteElement {
   width: 333px;
   height: 244px;
-  border: #707070 1px solid;
+  border-right: #707070 1px solid;
+  border-bottom: #707070 1px solid;
   position: relative;
 }
 .voteList {
   display: flex;
   flex-flow: wrap;
+  border-top: #707070 1px solid;
+  border-left: #707070 1px solid;
 }
 .voteListBox {
   width: 333px;
@@ -376,6 +379,10 @@ ul {
 }
 .pcVote .voteList {
   margin-right: 11px;
+  border: none;
+}
+.pcVote .voteElement {
+  border: #707070 1px solid;
 }
 .pcVote::-webkit-scrollbar {
   display: inline;
