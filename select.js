@@ -73,7 +73,7 @@ function is_mobile()
   if(iOSios)
     return true;
 
-  return true;    
+  return false;    
 }
 
 var picture = document.querySelector('.picture');
