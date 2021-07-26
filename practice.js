@@ -13,14 +13,6 @@ function draw(){
   canvas.height = target.height;
   ctx.drawImage(target, 0, 0);
 }
-function left(){
-  canvas.width = target.height;
-  canvas.height = target.width;
-  ctx.translate(canvas.width/2, canvas.height/2);
-  ctx.rotate((Math.PI / 180) * 270);
-	ctx.drawImage(target, -(target.width/2), -(target.height/2));
-  rotateCount--;
-}
 function right(){
   canvas.width = target.height;
   canvas.height = target.width;
@@ -33,8 +25,16 @@ function upside(){
   canvas.width = target.width;
   canvas.height = target.height;
   ctx.rotate((Math.PI / 180) * 180);
-  //ctx.drawImage(target, 0, 0);
-  ctx.drawImage(target, -target.width, -target.height);
+  ctx.drawImage(target, 0, 0);
+  //ctx.drawImage(target, -target.width, -target.height);
+}
+function left(){
+  canvas.width = target.height;
+  canvas.height = target.width;
+  ctx.translate(canvas.width/2, canvas.height/2);
+  ctx.rotate((Math.PI / 180) * 270);
+	ctx.drawImage(target, -(target.width/2), -(target.height/2));
+  rotateCount--;
 }
 
 function load_image(input){

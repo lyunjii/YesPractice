@@ -1,3 +1,9 @@
+html {
+  -webkit-text-size-adjust: none;
+  text-size-adjust: none;
+}
+/* for blocking zoom in mobile */
+
 @font-face {
   font-family: "NanumSquareRound";
   src: url("https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_two@1.0/NanumSquareRound.woff")
@@ -42,13 +48,14 @@ ul {
 }
 /*   information   */
 .user {
-  width: 303px;
+  width: 339px;
   height: 34px;
   border: #c9c9c9 1px solid;
   border-radius: 19px;
+  background-color: #ffffff;
   display: flex;
   align-items: center;
-  padding: 7px 10px 7px 15px;
+  padding: 10px 10px 10px 20px;
   margin-bottom: 4px;
 }
 .name {
@@ -74,7 +81,6 @@ ul {
   font-weight: lighter;
 }
 .info {
-  background-color: #ffffff;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -89,11 +95,11 @@ ul {
   transition: none;
 }
 .nav-pills .nav-link {
-  width: 101px;
+  width: 113px;
   height: 32px;
   border: none;
   border-radius: 0px;
-  background-color: #e2e2e2;
+  background-color: #c9c9c9;
   font-size: 14px;
   font-weight: bolder;
   color: #ffffff;
@@ -108,7 +114,8 @@ ul {
 }
 .iconImg {
   margin-right: 9px;
-  color: #ffffff;
+}
+.iconImg.black {
   filter: invert(100%) sepia(96%) hue-rotate(74deg) brightness(104%)
     contrast(104%);
 }
@@ -118,7 +125,6 @@ ul {
   height: 46px;
   filter: invert(87%) sepia(5%) saturate(6376%) hue-rotate(306deg)
     brightness(120%) contrast(101%);
-  overflow: hidden;
 }
 .upTxt {
   font-size: 14px;
@@ -146,8 +152,8 @@ ul {
   display: none;
 }
 .orangebox {
-  width: 303px;
-  height: 365px;
+  width: 339px;
+  height: 440px;
   border: #ff8836 3px solid;
   background-color: #ffffff;
   display: flex;
@@ -157,16 +163,19 @@ ul {
   margin-bottom: 30px;
   position: relative;
 }
+.orangebox.picture {
+  height: 365px;
+}
 /*   msg Box   */
 .msgBox {
-  width: 303px;
+  width: 339px;
   height: 33px;
   background-color: #f6f6f6;
   border: #c9c9c9 2px solid;
   border-radius: 0px;
   font-size: 14px;
   font-weight: lighter;
-  padding: 8.5px 19.75px;
+  padding: 8.5px 10px;
   margin-bottom: 8px;
 }
 .msgBox::-webkit-input-placeholder {
@@ -174,7 +183,7 @@ ul {
 }
 /*   send Button   */
 .sendBtn {
-  width: 303px;
+  width: 339px;
   height: 33px;
   background-color: #ff8836;
   border: none;
@@ -241,21 +250,15 @@ ul {
   top: 320px;
 }
 /*   vote   */
-.voteImage img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  border-radius: 9px 9px 0px 0px;
-}
 .voteImage {
-  width: 282px;
-  height: 160px;
+  width: 331px;
+  height: 186px;
 }
 .image_user {
-  width: 36px;
-  height: 36px;
+  width: 37px;
+  height: 37px;
   border-radius: 50%;
-  margin-right: 7px;
+  margin-right: 4px;
 }
 .image_comment {
   font-size: 12px;
@@ -266,17 +269,24 @@ ul {
   font-weight: lighter;
 }
 .imageInfo {
+  height: 58px;
   display: flex;
   align-items: center;
-  padding: 5px 6px;
+  padding: 5px 9px;
   border-top: #707070 1px solid;
+}
+.voteScroll {
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  top: 0;
 }
 .form-check-input[type="checkbox"] {
   position: absolute;
-  top: 7px;
-  left: 8.5px;
-  width: 15px;
-  height: 15px;
+  top: 9px;
+  left: 8px;
+  width: 20px;
+  height: 20px;
   border: #707070 1px solid;
   border-radius: 2px;
   margin: 0px;
@@ -286,24 +296,129 @@ ul {
   border-color: #ff8836;
 }
 .voteElement {
-  width: 284px;
-  height: 208px;
+  width: 333px;
+  height: 244px;
   border: #707070 1px solid;
-  border-radius: 10px;
   position: relative;
-  margin: 5px;
 }
 .voteList {
-  width: 100%;
-  height: 100%;
-  overflow-y: scroll;
   display: flex;
-  justify-content: center;
   flex-flow: wrap;
+  margin-right: 11px;
 }
-.voteList::-webkit-scrollbar {
+.voteListBox {
+  width: 333px;
+  height: 434px;
+  overflow-y: scroll;
+}
+.voteListBox::-webkit-scrollbar {
   display: none;
 }
+#toggleCol {
+  display: none;
+  width: 32px;
+  height: 32px;
+  position: absolute;
+  top: 7px;
+  right: 3px;
+  cursor: pointer;
+}
+/*  vote pc column 2  */
+.pcVote2 .voteImage {
+  width: 267px;
+  height: 151.31px;
+  border-radius: 10px 10px 0px 0px;
+}
+.pcVote2 .image_user {
+  width: 33px;
+  height: 33px;
+}
+.pcVote2 .imageInfo {
+  height: 45.69px;
+}
+.pcVote2 .voteElement {
+  width: 269px;
+  height: 197px;
+  border-radius: 10px;
+  margin: 10px 0px 0px 9px;
+}
+/*  vote pc column 1  */
+.pcVote1 .voteImage {
+  width: 545px;
+  height: 307px;
+  border-radius: 10px 10px 0px 0px;
+}
+.pcVote1 .image_user {
+  width: 70px;
+  height: 70px;
+  margin: 12px 10px 12px 12px;
+}
+.pcVote1 .image_comment {
+  margin-top: 18px;
+}
+.pcVote1 .image_name {
+  margin-top: 18px;
+  margin-bottom: 25px;
+}
+.pcVote1 .imageInfo {
+  height: 94px;
+  padding: 0px;
+}
+.pcVote1 .voteElement {
+  width: 547px;
+  height: 401px;
+  border-radius: 10px;
+  margin: 10px 10px 0px 9px;
+}
+/*   vote pc   */
+.pcVote {
+  width: 583px;
+  height: 651px;
+}
+.pcVote::-webkit-scrollbar {
+  display: inline;
+  width: 16px;
+  height: 0px;
+}
+.pcVote::-webkit-scrollbar-thumb {
+  background-color: #c9c9c9;
+  border-radius: 7px;
+}
+.pcVote::-webkit-scrollbar-track {
+  background-color: #f4f5f6;
+  border-radius: 8px;
+}
+.pcVote::-webkit-scrollbar-button {
+  height: 5px;
+}
+.pcVote::-webkit-scrollbar-button:start {
+  height: 47px;
+}
+.pcVote::-webkit-scrollbar-button:vertical:start:increment,
+.pcVote::-webkit-scrollbar-button:vertical:end:decrement {
+  display: none;
+}
+
+/* pinch event styling */
+
+.voteList.zoom > .voteElement {
+  width: 166px;
+  height: 130px;
+  border: #707070 1px solid;
+  position: relative;
+}
+.voteList.zoom > .voteElement > .voteImage {
+  width: 166px;
+  height: 94px;
+}
+.voteList.zoom > .voteElement > .imageInfo {
+  height: 36px;
+}
+.voteList.zoom > .voteElement > .imageInfo > .image_user {
+  width: 21px;
+  height: 21px;
+}
+
 /*   show text   */
 .showTxt {
   font-size: 14px;

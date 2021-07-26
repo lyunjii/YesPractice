@@ -17,6 +17,7 @@ window.onload = function (){
     var user = document.getElementsByClassName('user');
     for(var i = 0; i < user.length; i++){
       user[i].style.width = "296px";
+      user[i].style.paddingLeft = user[i].style.paddingRight = "15px";
     }
 
     var btn = document.getElementsByClassName('tabBtn');
@@ -29,8 +30,9 @@ window.onload = function (){
     var orangebox = document.getElementsByClassName('orangebox');
     for(var i = 0; i < orangebox.length; i++){
       orangebox[i].style.width = "600px";
-      orangebox[i].style.height = "547px";
+      orangebox[i].style.height = "657px";
     }
+    document.querySelector('.orangebox.picture').style.height = "547px";
 
     document.querySelector('.upTxt').style.marginTop = "12px";
 
@@ -71,7 +73,7 @@ function is_mobile()
   if(iOSios)
     return true;
 
-  return false;    
+  return true;    
 }
 
 var picture = document.querySelector('.picture');
@@ -81,8 +83,18 @@ var result = document.querySelector('.result');
 var editBtn = document.querySelector('.editBtn');
 var toggleBtn = document.querySelector('#toggleBtn')
 var msgBox = document.querySelector('.msgBox');
-var original_image_file = null;
-var imageWidth = imageHeight = 0;
+
+var cropper;
+
+var newCanvas = null; //자른 이미지 놓을 canvas
+var croppedCanvas = null;
+var originalImage;
+// var original_image_file = null;
+// var original_src = null;
+
+var commands = [];  //버튼 명령을 저장하는 배열
+var rotateCount = 0;  //원본 이미지를 회전 정보
+var btnDisable = false; //크롭 확인 버튼 비활성화
 
 function load_image(input){
 /*
@@ -109,19 +121,15 @@ function load_image(input){
     var file = input.files[0];
     original_image_file = file;
     newImage.src = URL.createObjectURL(file);
+    showPic.appendChild(newImage);
 
+    //원본 이미지의 정보 저장
     var fileReader = new FileReader();
     fileReader.onload = function(e){
-      var tmp = new Image();
-      tmp.src = e.target.result;
-      tmp.onload = function(){
-        imageWidth = this.width;
-        imageHeight = this.height;
-      };
+      originalImage = new Image();
+      originalImage.src = e.target.result;
     }
     fileReader.readAsDataURL(file);
-
-    showPic.appendChild(newImage);
 
     showPic.style.display = "block";
     picture.style.marginBottom = "0px";
@@ -133,10 +141,6 @@ function load_image(input){
     newImage.style.width = "100%";
     newImage.style.height = "100%";
     newImage.style.objectFit = "contain";
-    //newImage.style.objectFit = "cover";
-    //container.style.overflow = "hidden";
-    newImage.style.filter = "none";
-    //newImage.style.maxWidth = "100%";
 
     edit_image();
 
@@ -145,7 +149,6 @@ function load_image(input){
   }
 }
 
-var cropper;
 
 function edit_image(){
   const image = document.getElementById('newPic');
@@ -162,10 +165,6 @@ function edit_image(){
   });
 }
 
-var commands = [];  //버튼 명령을 저장하는 배열
-var rotateCount = 0;
-var newCanvas = null; //자른 이미지 놓을 canvas
-var btnDisable = false; //크롭 확인 버튼 비활성화
 
 function toggle_cropper(){
   if(toggleBtn.getAttribute('value') === 'on'){
@@ -193,7 +192,6 @@ function rotateLeft(){
   commands.push("rotate_L");
   rotateCount--;
 }
-
 function rotateRight(){
   cropper.rotate(90);
   commands.push("rotate_R");
@@ -205,7 +203,6 @@ function get_image(){
   else{
     newCanvas = null;
     newCanvas = document.createElement("canvas");
-    newCanvas.setAttribute("id", 'newCanvas');
 
     if(is_mobile()){
       newCanvas = cropper.getCroppedCanvas({
@@ -220,9 +217,18 @@ function get_image(){
     });
     }
     
+    croppedCanvas = null;
+    croppedCanvas = document.createElement("canvas");
+    croppedCanvas = cropper.getCroppedCanvas({
+      width: 1464,
+      height: 823
+    });
+
     result.appendChild(newCanvas);
+    result.appendChild(croppedCanvas);
 
     result.style.display = "flex";
+    croppedCanvas.style.display = "none";
     result.style.alignItems = "center";
     showPic.style.display = "none";
     btnDisable = true;
@@ -248,46 +254,95 @@ function undo(){
       while (result.firstChild) {
         result.removeChild(result.firstChild);
       }
-      newCanvas = null;
+      newCanvas = croppedCanvas = null;
       btnDisable = false;
       break;
   }
 }
 
 function rotateOriginal(){
-  var originalCanvas = document.createElement("canvas");
+  var originalCanvas = document.querySelector("#originalCanvas");
   var originalContext = originalCanvas.getContext('2d');
-  var originalImage = new Image();
+  var editedWidth = editedHeight = 0;
+  var originalRatio = originalImage.width / originalImage.height;
   
-  originalImage.src = URL.createObjectURL(original_image_file);
-  originalImage.width = imageWidth;
-  originalImage.height = imageHeight;
-  originalContext.clearRect(0, 0, imageWidth, imageHeight);
-  
+  originalContext.clearRect(0, 0, originalCanvas.width, originalCanvas.height);
+  originalContext.save();
+
   var rotate = rotateCount % 4;
   if (rotate < 0) rotate += 4;
 
-  if(rotate == 0 || rotate == 2){
-    originalCanvas.width = originalImage.width;
-    originalCanvas.height = originalImage.height;
-    if(rotate == 2){
-      originalContext.rotate((Math.PI / 180) * 180);
-    }
-    originalContext.drawImage(originalImage, 0, 0);
-  }
-  else{
-    originalCanvas.width = originalImage.height;
-    originalCanvas.height = originalImage.width;
-    originalContext.translate(originalCanvas.width/2, originalCanvas.height/2);
-    
-    if(rotate == 1){
-      originalContext.rotate((Math.PI / 180) * 90);
+  if(rotate==0 || rotate==2){
+    if(originalRatio < 16/9){
+      editedHeight = originalCanvas.height;
+      editedWidth = editedHeight * originalRatio;
     }
     else{
-      originalContext.rotate((Math.PI / 180) * 270);
+      editedWidth = originalCanvas.width;
+      editedHeight = editedWidth / originalRatio;
     }
-    originalContext.drawImage(originalImage, -(originalImage.width/2), -(originalImage.height/2));
   }
+  else{
+    if(originalRatio < 9/16){
+      editedHeight = originalCanvas.width;
+      editedWidth = editedHeight * originalRatio;
+    }
+    else{
+      editedWidth = originalCanvas.height;
+      editedHeight = editedWidth / originalRatio;
+    }
+  }
+  
+  originalContext.filter = 'blur(50px)';
+  switch(rotate){
+    case 0:
+      originalContext.drawImage(originalImage, 0, 0, originalCanvas.width, originalCanvas.height);
+      originalContext.filter = 'none';
+      if(originalRatio < 16/9){
+        originalContext.drawImage(originalImage, (originalCanvas.width-editedWidth)/2, 0, editedWidth, editedHeight);
+      }
+      else{
+        originalContext.drawImage(originalImage, 0, (originalCanvas.height-editedHeight)/2, editedWidth, editedHeight);
+      }
+      break;
+    case 1:
+      originalContext.rotate((Math.PI / 180) * 90);
+      originalContext.translate(0, -originalCanvas.width);
+      originalContext.drawImage(originalImage, 0, 0, originalCanvas.height, originalCanvas.width);
+      originalContext.filter = "none";
+      if(originalRatio < 9/16){
+        originalContext.drawImage(originalImage, (originalCanvas.height-editedWidth)/2, 0, editedWidth, editedHeight);
+      }
+      else{
+        originalContext.drawImage(originalImage, 0, (originalCanvas.width-editedHeight)/2, editedWidth, editedHeight);
+      }
+      break;
+    case 2:
+      originalContext.rotate((Math.PI / 180) * 180);
+      originalContext.translate(-originalCanvas.width, -originalCanvas.height);
+      originalContext.drawImage(originalImage, 0, 0, originalCanvas.width, originalCanvas.height);
+      originalContext.filter = 'none';
+      if(originalRatio < 16/9){
+        originalContext.drawImage(originalImage, (originalCanvas.width-editedWidth)/2, 0, editedWidth, editedHeight);
+      }
+      else{
+        originalContext.drawImage(originalImage, 0, (originalCanvas.height-editedHeight)/2, editedWidth, editedHeight);
+      }
+      break;
+    case 3:
+      originalContext.rotate((Math.PI / 180) * 270);
+      originalContext.translate(-originalCanvas.height, 0);
+      originalContext.drawImage(originalImage, 0, 0, originalCanvas.height, originalCanvas.width);
+      originalContext.filter = 'none';
+      if(originalRatio < 9/16){
+        originalContext.drawImage(originalImage, (originalCanvas.height-editedWidth)/2, 0, editedWidth, editedHeight);
+      }
+      else{
+        originalContext.drawImage(originalImage, 0, (originalCanvas.width-editedHeight)/2, editedWidth, editedHeight);
+        }
+      break;  
+  }
+  originalContext.restore();
   return originalCanvas;
 }
 
@@ -310,7 +365,7 @@ function reset_image_box(){
   while (result.firstChild) {
     result.removeChild(result.firstChild);
   }  
-  newCanvas = null;
+  newCanvas = croppedCanvas = null;
   msgBox.value='';
   btnDisable = false;
   commands = [];
@@ -332,7 +387,7 @@ function upload_image(){
     return;
   }
 
- // try{
+  try{
     if(toggleBtn.getAttribute('value') == 'on')
     {
       //영역을 선택하지 않았을 때
@@ -349,25 +404,22 @@ function upload_image(){
       tbumbnailContext.clearRect(0, 0, thumbnailCanvas.width, thumbnailCanvas.height);
 
       
-      tbumbnailContext.drawImage(newCanvas, 0, 0, 343, 191);
+      tbumbnailContext.drawImage(croppedCanvas, 0, 0, 343, 191);
       var thumbnailData = thumbnailCanvas.toDataURL("image/jpeg",0.7);
 
       var canvas = document.getElementById("Canvas2");
       var canvasContext = canvas.getContext("2d");
       canvasContext.clearRect(0, 0, canvas.width, canvas.height);
-      canvasContext.drawImage(newCanvas, 0, 0, canvas.width, canvas.height);
-
-      canvas.style.display = "block";
-
+      canvasContext.drawImage(croppedCanvas, 0, 0, canvas.width, canvas.height);
 
       //parent.sunny.uploadToGD_base64(newCanvas.toDataURL("image/PNG",1),msg,thumbnailData);
-     // parent.sunny.uploadToGD_base64(thumbnailData,msg,canvas.toDataURL("image/PNG",1),"image");
+      parent.sunny.uploadToGD_base64(thumbnailData,msg,canvas.toDataURL("image/PNG",1),"image");
     }
-      
+
     else
     {
       //위 if문 안의 코드 참고해서 작성했습니다
-      //크롭이미지 캔버스 대신 회전시킨 원본을 그린 캔버스를 작성했습니다
+      //크롭이미지 캔버스 자리에 회전시킨 원본을 그린 캔버스를 작성했습니다
       var thumbnailCanvas = document.getElementById("thumbnail");
       var tbumbnailContext = thumbnailCanvas.getContext("2d");
 
@@ -379,9 +431,7 @@ function upload_image(){
       tbumbnailContext.drawImage(rotateOriginal(), 0, 0, 343, 191);
       var thumbnailData = thumbnailCanvas.toDataURL("image/jpeg",0.7);
 
-      document.querySelector('body').appendChild(rotateOriginal());
-
-
+      
       parent.sunny.uploadToGD_base64(thumbnailData,msg,rotateOriginal().toDataURL("image/PNG",1),"image");
 
       //parent. document.getElementById("sunny_spinner").classList.remove("d-none");
@@ -410,11 +460,41 @@ function upload_image(){
     */
     
   }
- // }
-  // catch(err)
-  // {
-  //   console.log(err.message);
-  // }
+  }
+  catch(err)
+  {
+    console.log(err.message);
+  }
 
   reset_image_box();
+}
+
+function vote(){
+  if(!is_mobile()){
+    var voteListBox = document.querySelector('.voteListBox');
+    voteListBox.classList.add('pcVote');
+    voteListBox.classList.add('pcVote2');
+    voteListBox.classList.remove('pcVote1');
+    var btn = document.querySelector('#toggleCol')
+    btn.style.display = "block";
+    btn.setAttribute('value', '2');
+    btn.setAttribute('src', 'img/1row.svg');
+    document.querySelector('.orangebox.vote').style.paddingRight = "9px";
+  }
+}
+
+function toggle_column(btn){
+  var voteListBox = document.querySelector('.voteListBox');
+  if(btn.getAttribute('value') === '2'){
+    btn.setAttribute('value', '1');
+    btn.setAttribute('src', 'img/2row.svg');
+    voteListBox.classList.toggle('pcVote2');
+    voteListBox.classList.toggle('pcVote1');
+  }
+  else{
+    btn.setAttribute('value', '2');
+    btn.setAttribute('src', 'img/1row.svg');
+    voteListBox.classList.toggle('pcVote2');
+    voteListBox.classList.toggle('pcVote1');
+  }
 }

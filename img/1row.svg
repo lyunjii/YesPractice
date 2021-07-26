@@ -1,0 +1,32 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 32 32">
+  <defs>
+    <style>
+      .cls-1, .cls-2 {
+        fill: #fff;
+        stroke: #ff8836;
+      }
+
+      .cls-1 {
+        stroke-width: 2px;
+      }
+
+      .cls-3 {
+        stroke: none;
+      }
+
+      .cls-4 {
+        fill: none;
+      }
+    </style>
+  </defs>
+  <g id="_1열" data-name="1열" transform="translate(0 0)">
+    <g id="타원_17" data-name="타원 17" class="cls-1" transform="translate(0 0)">
+      <circle class="cls-3" cx="16" cy="16" r="16"/>
+      <circle class="cls-4" cx="16" cy="16" r="15"/>
+    </g>
+    <g id="사각형_149" data-name="사각형 149" class="cls-2" transform="translate(5 9.812)">
+      <rect class="cls-3" width="22" height="12.375"/>
+      <rect class="cls-4" x="0.5" y="0.5" width="21" height="11.375"/>
+    </g>
+  </g>
+</svg>
