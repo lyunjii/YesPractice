@@ -498,3 +498,13 @@ function toggle_column(btn){
     voteListBox.classList.toggle('pcVote1');
   }
 }
+
+function adjust_size(height) {
+  var orangebox = document.getElementsByClassName("orangebox");
+
+  let screen_height = height - 199;
+
+  for(var i = 1; i < orangebox.length; i++){
+    orangebox.style.height = `${screen_height - 210}px`;
+  }
+}
