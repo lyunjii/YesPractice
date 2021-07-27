@@ -499,14 +499,14 @@ function toggle_column(btn){
   }
 }
 
-const appHeight = () => {
-  document.documentElement.style.setProperty('--app-height', `${window.innerHeight}px`)
+function adjust_size(height) {
+ let screen_height = height - 199;
+
   var orangebox = document.getElementsByClassName("orangebox");
-  let screen_height = `${window.innerHeight}px` - 199;
+  var voteListBox = document.querySelector(".voteListBox");
 
   for(var i = 1; i < orangebox.length; i++){
     orangebox.style.height = `${screen_height - 210}px`;
   }
-};
-window.addEventListener('resize', appHeight);
-appHeight();
+  voteListBox.style.height = `${screen_height - 216}px`;
+}
