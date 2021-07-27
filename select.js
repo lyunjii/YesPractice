@@ -499,12 +499,14 @@ function toggle_column(btn){
   }
 }
 
-function adjust_size(height) {
+const appHeight = () => {
+  document.documentElement.style.setProperty('--app-height', `${window.innerHeight}px`)
   var orangebox = document.getElementsByClassName("orangebox");
-
-  let screen_height = height - 199;
+  let screen_height = `${window.innerHeight}px` - 199;
 
   for(var i = 1; i < orangebox.length; i++){
     orangebox.style.height = `${screen_height - 210}px`;
   }
-}
+};
+window.addEventListener('resize', appHeight);
+appHeight();
