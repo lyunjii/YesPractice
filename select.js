@@ -73,7 +73,7 @@ function is_mobile()
   if(iOSios)
     return true;
 
-  return false;    
+  return true;    
 }
 
 var picture = document.querySelector('.picture');
@@ -206,7 +206,7 @@ function get_image(){
 
     if(is_mobile()){
       newCanvas = cropper.getCroppedCanvas({
-        width: 297,
+        width: 333,
         height: 359
       });
     }
@@ -500,13 +500,15 @@ function toggle_column(btn){
 }
 
 function adjust_size(height) {
- let screen_height = height - 199;
+  if(is_mobile()){
+    let screen_height = height - 199;
 
-  var orangebox = document.getElementsByClassName("orangebox");
-  var voteListBox = document.querySelector(".voteListBox");
+    var orangebox = document.getElementsByClassName("orangebox");
+    var voteListBox = document.querySelector(".voteListBox");
 
-  for(var i = 1; i < orangebox.length; i++){
-    orangebox.style.height = `${screen_height - 210}px`;
+    for(var i = 1; i < orangebox.length; i++){
+      orangebox[i].style.height = `${screen_height - 210}px`;
+    }
+    voteListBox.style.height = `${screen_height - 216}px`;
   }
-  voteListBox.style.height = `${screen_height - 216}px`;
 }
