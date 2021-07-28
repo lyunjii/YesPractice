@@ -544,8 +544,8 @@ function adjust_size(height) {
 
 window.addEventListener("orientationchange", function() {
   if(is_mobile()) {
-    var mobile_height = window.innerHeight;
-    var showBox_width = (9 * mobile_height)/16;
+    var mobile_height = window.innerWidth;
+    var showBox_width = (16 * mobile_height)/9;
     var slideTab = document.getElementById('pills-show');
     var showBox = document.querySelector('.slide');
     if(slideTab.classList.contains('active')) {
@@ -554,8 +554,8 @@ window.addEventListener("orientationchange", function() {
         document.querySelector('.info').style.display = "none";
         document.querySelector('.typeTab').style.display = "none";
         showBox.style.marginBottom = "0px";
-        showbox.style.width = `${mobile_height}px`;
-        showBox.style.height = `${showBox_width}px`;
+        showbox.style.width = `${showBox_width}px`;
+        showBox.style.height = `${mobile_height}px`;
       }
       else{
         document.querySelector('.header').style.display = "flex";
