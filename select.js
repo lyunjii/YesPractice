@@ -514,3 +514,16 @@ function adjust_size(height) {
     voteListBox.style.height = `${screen_height - 236}px`;
   }
 }
+
+window.addEventListener("orientationchange", function() {
+  if(window.orientation == -90 || window.orientation == 90) {
+    if(is_mobile()){
+      var showBox = document.querySelector('.orangebox.show');
+      document.querySelector('.header').style.display = "none";
+      document.querySelector('.info').style.display = "none";
+      document.querySelector('.typeTab').style.display = "none";
+      showbox.style.width = "676px";
+      showBox.style.height = "375px";
+    }
+  }
+}, false);
