@@ -518,9 +518,9 @@ function adjust_size(height) {
 window.addEventListener("orientationchange", function() {
   if(is_mobile()) {
     var mobile_height = window.innerWidth;
-    var slideTab = document.querySelector('#pills-show');
+    var slideTab = document.getElementById('pills-show');
     var showBox = document.querySelector('.slide');
-    if(slideTab.classList.contains(active)) {
+    if(slideTab.classList.contains('active')) {
       if(window.orientation == -90 || window.orientation == 90) {
         document.querySelector('.header').style.display = "none";
         document.querySelector('.info').style.display = "none";
