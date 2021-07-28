@@ -544,16 +544,16 @@ function adjust_size(height) {
 
 window.addEventListener("orientationchange", function() {
   if(is_mobile()) {
-    var slideTab = document.getElementById('pills-show');
+    var slideTab = document.getElementById('pills-slide');
     var showBox = document.querySelector('.slide');
     if(slideTab.classList.contains('active')) {
       if(window.orientation == -90 || window.orientation == 90) {
         //var mobile_height = window.innerWidth;
+        var showBox_width = (16 * window.innerWidth)/9;
         document.querySelector('.header').style.display = "none";
         document.querySelector('.info').style.display = "none";
         document.querySelector('.typeTab').style.display = "none";
         showBox.style.marginBottom = "0px";
-        var showBox_width = (16 * window.innerWidth)/9;
         showBox.style.height = `${window.innerWidth}px`;
         showbox.style.width = `${showBox_width}px`;
       }
