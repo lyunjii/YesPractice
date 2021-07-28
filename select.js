@@ -555,8 +555,8 @@ window.addEventListener("orientationchange", function() {
         document.querySelector('.info').style.display = "none";
         document.querySelector('.typeTab').style.display = "none";
         showBox.style.marginBottom = "0px";
-        //showbox.style.width = `${(16/9)*windowWidth}px`;//`${window.innerHeight}px`;
-        showBox.style.height = "100vh";//`${window.innerWidth}px`;
+        showbox.style.width = "(16/9)*(100vh - 15px)px";//`${window.innerHeight}px`;
+        showBox.style.height = "100vh - 15px";//`${window.innerWidth}px`;
       }
       else{
         document.querySelector('.header').style.display = "flex";
