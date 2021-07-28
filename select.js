@@ -551,8 +551,6 @@ window.addEventListener("orientationchange", function() {
       if(window.orientation == -90 || window.orientation == 90) {
         //var mobile_height = window.innerWidth;
         //var showBox_width = (16 * window.innerWidth)/9;
-        var boxHeight = 100vh;
-
         document.querySelector('.header').style.display = "none";
         document.querySelector('.info').style.display = "none";
         document.querySelector('.typeTab').style.display = "none";
