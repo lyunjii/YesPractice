@@ -552,15 +552,15 @@ window.addEventListener("orientationchange", function() {
         document.querySelector('.info').style.display = "none";
         document.querySelector('.typeTab').style.display = "none";
         showBox.style.marginBottom = "0px";
-        showbox.style.width = `${window.innerHeight}px`;
-        showBox.style.height = `${window.innerWidth}px`;
+        showbox.style.width = "100vh";//`${window.innerHeight}px`;
+        showBox.style.height = "(1600/9)vh";//`${window.innerWidth}px`;
       }
       else{
         document.querySelector('.header').style.display = "flex";
         document.querySelector('.info').style.display = "flex";
         document.querySelector('.typeTab').style.display = "block";
         showBox.style.marginBottom = "30px";
-        adjust_size(window.innerHeight);
+        adjust_size(window.innerWidth);
       }
     }
   }
