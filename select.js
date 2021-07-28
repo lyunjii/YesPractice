@@ -527,17 +527,17 @@ window.addEventListener("orientationchange", function() {
         document.querySelector('.header').style.display = "none";
         document.querySelector('.info').style.display = "none";
         document.querySelector('.typeTab').style.display = "none";
-        showbox.style.width = `${mobile_height}px`;
-        showBox.style.height = `${(16 * mobile_height)/9}px`;
         showBox.style.marginBottom = "0px";
+        showbox.style.width = `${(9 * mobile_height)/16}px`;
+        showBox.style.height = `${mobile_height}px`;
       }
       else{
         document.querySelector('.header').style.display = "flex";
         document.querySelector('.info').style.display = "flex";
         document.querySelector('.typeTab').style.display = "block";
+        showBox.style.marginBottom = "30px";
         showbox.style.width = "339px";
         showBox.style.height = "440px";
-        showBox.style.marginBottom = "30px";
       }
     }
   }
