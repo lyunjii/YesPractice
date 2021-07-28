@@ -503,15 +503,17 @@ function toggle_column(btn){
 
 function adjust_size(height) {
   if(is_mobile()){
-    let screen_height = height;
+    if(window.orientation == 0){
+      let screen_height = height;
 
-    var orangebox = document.getElementsByClassName("orangebox");
-    var voteListBox = document.querySelector(".voteListBox");
+      var orangebox = document.getElementsByClassName("orangebox");
+      var voteListBox = document.querySelector(".voteListBox");
 
-    for(var i = 1; i < orangebox.length; i++){
-      orangebox[i].style.height = `${screen_height - 230}px`;
+      for(var i = 1; i < orangebox.length; i++){
+        orangebox[i].style.height = `${screen_height - 230}px`;
+      }
+      voteListBox.style.height = `${screen_height - 236}px`;
     }
-    voteListBox.style.height = `${screen_height - 236}px`;
   }
 }
 
