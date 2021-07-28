@@ -563,7 +563,7 @@ window.addEventListener("orientationchange", function() {
         document.querySelector('.header').style.display = "flex";
         document.querySelector('.info').style.display = "flex";
         document.querySelector('.typeTab').style.display = "block";
-        showBox.classList.remove('90slide');
+        showBox.classList.remove('slideShow');
         showBox.style.marginBottom = "30px";
         adjust_size(windowHeight);
       }
