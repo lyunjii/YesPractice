@@ -554,8 +554,8 @@ window.addEventListener("orientationchange", function() {
         document.querySelector('.info').style.display = "none";
         document.querySelector('.typeTab').style.display = "none";
         showBox.style.marginBottom = "0px";
-        showbox.style.width = `${showBox_width}px`;
-        showBox.style.height = `${mobile_height}px`;
+        showbox.style.width = `${mobile_height}px`;
+        showBox.style.height = `${showBox_width}px`;
       }
       else{
         document.querySelector('.header').style.display = "flex";
