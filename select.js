@@ -57,7 +57,32 @@ window.onload = function (){
     //cropPointer.style.height = "22px";
     
   }
-  adjust_size(window.innerHeight);
+  else{
+    adjust_size(window.innerHeight);
+    window.addEventListener("orientationchange", function() {
+      var mobile_height = window.innerHeight;
+      var slideTab = document.getElementById('pills-show');
+      var showBox = document.querySelector('.slide');
+      if(slideTab.classList.contains('active')) {
+        if(window.orientation == -90 || window.orientation == 90) {
+          document.querySelector('.header').style.display = "none";
+          document.querySelector('.info').style.display = "none";
+          document.querySelector('.typeTab').style.display = "none";
+          showBox.style.marginBottom = "0px";
+          showbox.style.width = `${(9 * mobile_height)/16}px`;
+          showBox.style.height = `${mobile_height}px`;
+        }
+        else{
+          document.querySelector('.header').style.display = "flex";
+          document.querySelector('.info').style.display = "flex";
+          document.querySelector('.typeTab').style.display = "block";
+          showBox.style.marginBottom = "30px";
+          showbox.style.width = "339px";
+          showBox.style.height = "440px";
+        }
+      }
+    }, false);
+  }
 }
 
 function is_mobile()
