@@ -518,8 +518,8 @@ function adjust_size(height) {
 window.addEventListener("orientationchange", function() {
   if(is_mobile()) {
     var mobile_height = window.innerHeight;
+    var showBox = document.querySelector('.show');
     if(window.orientation == -90 || window.orientation == 90) {
-      var showBox = document.querySelector('.show');
       document.querySelector('.header').style.display = "none";
       document.querySelector('.info').style.display = "none";
       document.querySelector('.typeTab').style.display = "none";
