@@ -551,12 +551,14 @@ window.addEventListener("orientationchange", function() {
       if(window.orientation == -90 || window.orientation == 90) {
         //var mobile_height = window.innerWidth;
         //var showBox_width = (16 * window.innerWidth)/9;
+        var boxHeight = 100vh;
+
         document.querySelector('.header').style.display = "none";
         document.querySelector('.info').style.display = "none";
         document.querySelector('.typeTab').style.display = "none";
         showBox.style.marginBottom = "0px";
         showBox.style.height = "100vh";//`${window.innerWidth}px`;
-        showbox.style.width = "178vh";//`${window.innerHeight}px`;
+        showbox.style.width = "calc((16 / 9) * 100vh)";//`${window.innerHeight}px`;
       }
       else{
         document.querySelector('.header').style.display = "flex";
