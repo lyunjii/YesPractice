@@ -517,14 +517,15 @@ function adjust_size(height) {
 
 window.addEventListener("orientationchange", function() {
   if(is_mobile()) {
-    var mobile_height = window.innerHeight;
-    var showBox = document.querySelector('.show');
+    var mobile_height = window.innerWidth;
+    var showBox = document.querySelector('.slide');
     if(window.orientation == -90 || window.orientation == 90) {
       document.querySelector('.header').style.display = "none";
       document.querySelector('.info').style.display = "none";
       document.querySelector('.typeTab').style.display = "none";
       showbox.style.width = `${mobile_height}px`;
       showBox.style.height = `${(16 * mobile_height)/9}px`;
+      showBox.style.marginBottom = "0px";
     }
     else{
       document.querySelector('.header').style.display = "flex";
@@ -532,6 +533,7 @@ window.addEventListener("orientationchange", function() {
       document.querySelector('.typeTab').style.display = "block";
       showbox.style.width = "339px";
       showBox.style.height = "440px";
+      showBox.style.marginBottom = "30px";
     }
   }
  
