@@ -435,7 +435,6 @@ ul {
   color: #adafb3;
 }
 .slideShow {
-  height: 90vh;
-  width: calc((16 / 9) * 90vh);
+  width: calc((16 / 9) * 100vh);
   margin-bottom: 0px;
 }

@@ -555,7 +555,7 @@ window.addEventListener("orientationchange", function() {
         document.querySelector('.info').style.display = "none";
         document.querySelector('.typeTab').style.display = "none";
         // showBox.style.marginBottom = "0px";
-        // showBox.style.height = "100vh";//`${window.innerWidth}px`;
+        showBox.style.height = "100vh";//`${window.innerWidth}px`;
         // showbox.style.width = "calc((16 / 9) * 100vh)";//`${window.innerHeight}px`;
         showBox.classList.add('slideShow');
       }
