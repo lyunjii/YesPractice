@@ -553,15 +553,17 @@ window.addEventListener("orientationchange", function() {
         //var showBox_width = (16 * window.innerWidth)/9;
         document.querySelector('.header').style.display = "none";
         document.querySelector('.info').style.display = "none";
-        document.querySelector('.typeTab').style.display = "none";
-        showBox.style.marginBottom = "0px";
-        showBox.style.height = "100vh";//`${window.innerWidth}px`;
-        showbox.style.width = "calc((16 / 9) * 100vh)";//`${window.innerHeight}px`;
+        // document.querySelector('.typeTab').style.display = "none";
+        // showBox.style.marginBottom = "0px";
+        // showBox.style.height = "100vh";//`${window.innerWidth}px`;
+        // showbox.style.width = "calc((16 / 9) * 100vh)";//`${window.innerHeight}px`;
+        showBox.classList.add('90slide');
       }
       else{
         document.querySelector('.header').style.display = "flex";
         document.querySelector('.info').style.display = "flex";
         document.querySelector('.typeTab').style.display = "block";
+        showBox.classList.remove('90slide');
         showBox.style.marginBottom = "30px";
         adjust_size(windowHeight);
       }

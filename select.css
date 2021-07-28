@@ -434,3 +434,8 @@ ul {
   text-align: center;
   color: #adafb3;
 }
+.orangebox.slide.90slide {
+  height: 100vh;
+  margin-bottom: 0px;
+  width: calc((16 / 9) * 100vh);
+}
