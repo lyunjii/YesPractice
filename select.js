@@ -553,11 +553,11 @@ window.addEventListener("orientationchange", function() {
         //var showBox_width = (16 * window.innerWidth)/9;
         document.querySelector('.header').style.display = "none";
         document.querySelector('.info').style.display = "none";
-        // document.querySelector('.typeTab').style.display = "none";
+        document.querySelector('.typeTab').style.display = "none";
         // showBox.style.marginBottom = "0px";
         // showBox.style.height = "100vh";//`${window.innerWidth}px`;
         // showbox.style.width = "calc((16 / 9) * 100vh)";//`${window.innerHeight}px`;
-        showBox.classList.add('90slide');
+        showBox.classList.add('slideShow');
       }
       else{
         document.querySelector('.header').style.display = "flex";
