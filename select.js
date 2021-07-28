@@ -519,7 +519,7 @@ function adjust_size(height) {
 
 window.addEventListener("orientationchange", function() {
   if(is_mobile()) {
-    var mobile_height = window.innerWidth;
+    var mobile_height = window.innerHeight;
     var slideTab = document.getElementById('pills-show');
     var showBox = document.querySelector('.slide');
     if(slideTab.classList.contains('active')) {
