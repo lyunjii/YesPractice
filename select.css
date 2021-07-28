@@ -428,8 +428,8 @@ ul {
   height: 21px;
 }
 
-/*   show text   */
-.showTxt {
+/*   slide text   */
+.slideTxt {
   font-size: 14px;
   text-align: center;
   color: #adafb3;
