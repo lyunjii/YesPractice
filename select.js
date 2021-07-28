@@ -516,14 +516,23 @@ function adjust_size(height) {
 }
 
 window.addEventListener("orientationchange", function() {
-  if(window.orientation == -90 || window.orientation == 90) {
-    if(is_mobile()){
-      var showBox = document.querySelector('.orangebox.show');
+  if(is_mobile()) {
+    var mobile_height = window.innerHeight;
+    if(window.orientation == -90 || window.orientation == 90) {
+      var showBox = document.querySelector('.show');
       document.querySelector('.header').style.display = "none";
       document.querySelector('.info').style.display = "none";
       document.querySelector('.typeTab').style.display = "none";
-      showbox.style.width = "676px";
-      showBox.style.height = "375px";
+      showbox.style.width = `${mobile_height}px`;
+      showBox.style.height = `${(16 * mobile_height)/9}px`;
+    }
+    else{
+      document.querySelector('.header').style.display = "flex";
+      document.querySelector('.info').style.display = "flex";
+      document.querySelector('.typeTab').style.display = "block";
+      showbox.style.width = "339px";
+      showBox.style.height = "440px";
     }
   }
+ 
 }, false);
