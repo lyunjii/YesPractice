@@ -529,15 +529,13 @@ function toggle_column(btn){
 function adjust_size(height) {
   if(is_mobile()){
     if(window.orientation == 0){
-      let screen_height = height;
-
       var orangebox = document.getElementsByClassName("orangebox");
       var voteListBox = document.querySelector(".voteListBox");
 
       for(var i = 1; i < orangebox.length; i++){
-        orangebox[i].style.height = `${screen_height - 230}px`;
+        orangebox[i].style.height = `${height - 230}px`;
       }
-      voteListBox.style.height = `${screen_height - 236}px`;
+      voteListBox.style.height = `${height - 236}px`;
     }
   }
 }
@@ -549,21 +547,20 @@ window.addEventListener("orientationchange", function() {
     if(slideTab.classList.contains('active')) {
       if(window.orientation == -90 || window.orientation == 90) {
         //var mobile_height = window.innerWidth;
-        var showBox_width = (16 * window.innerWidth)/9;
+        //var showBox_width = (16 * window.innerWidth)/9;
         document.querySelector('.header').style.display = "none";
         document.querySelector('.info').style.display = "none";
         document.querySelector('.typeTab').style.display = "none";
         showBox.style.marginBottom = "0px";
+        showbox.style.width = `${window.innerHeight}px`;
         showBox.style.height = `${window.innerWidth}px`;
-        showbox.style.width = `${showBox_width}px`;
       }
       else{
         document.querySelector('.header').style.display = "flex";
         document.querySelector('.info').style.display = "flex";
         document.querySelector('.typeTab').style.display = "block";
         showBox.style.marginBottom = "30px";
-        showbox.style.width = "339px";
-        showBox.style.height = "440px";
+        adjust_size(window.innerHeight);
       }
     }
   }
