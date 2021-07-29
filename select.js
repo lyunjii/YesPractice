@@ -552,7 +552,6 @@ window.addEventListener("orientationchange", function() {
           slideContainer.style.setProperty('height', 'calc(((9 / 16) * 100vw) - 6px)');
         }
       }
-        
       else{
         document.querySelector('.header').style.display = "flex";
         document.querySelector('.info').style.display = "flex";
@@ -574,8 +573,11 @@ function is_tablet(){
   if(!is_mobile()){
     return false;
   }
-  if(navigator.userAgent.match(/iPad|Tablet/i)){
+  if(/iPad|Tablet/i.test(navigator.userAgent) ) {
     return true;
   }
+  // if(navigator.userAgent.match(/iPad|Tablet/i)){
+  //   return true;
+  // }
   return false;
 }
