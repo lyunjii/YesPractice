@@ -535,17 +535,31 @@ window.addEventListener("orientationchange", function() {
         document.querySelector('.info').style.display = "none";
         document.querySelector('.typeTab').style.display = "none";
         document.querySelector('body').style.backgroundColor = "#c9c9c9";
-        slideBox.style.setProperty('width', 'calc((16 / 9) * 100vh)');
-        slideBox.style.height = "100vh";
         slideBox.style.marginBottom = "0px";
-        slideContainer.style.setProperty('width', 'calc(((16 / 9) * 100vh) - 6px)');
-        slideContainer.style.setProperty('height', 'calc(100vh - 6px)');
+        if(!is_tablet()){
+          slideBox.style.setProperty('width', 'calc((16 / 9) * 100vh)');
+          slideBox.style.height = "100vh";
+          slideContainer.style.setProperty('width', 'calc(((16 / 9) * 100vh) - 6px)');
+          slideContainer.style.setProperty('height', 'calc(100vh - 6px)');
+        }
+        else{
+          slideBox.style.position = "absolute";
+          slideBox.style.setProperty('top', 'calc((100vh - ((9 / 16) * 100vw))/2)');
+          slideBox.style.setProperty('left', '0');
+          slideBox.style.setProperty('width', '100vw');
+          slideBox.style.setProperty('height', 'calc((9 / 16) * 100vw)');
+          slideContainer.style.setProperty('width', 'calc(100vw - 6px)');
+          slideContainer.style.setProperty('height', 'calc(((9 / 16) * 100vw) - 6px)');
+        }
       }
+        
       else{
         document.querySelector('.header').style.display = "flex";
         document.querySelector('.info').style.display = "flex";
         document.querySelector('.typeTab').style.display = "block";
         document.querySelector('body').style.backgroundColor = "#FAFBFC";
+        slideBox.style.position = "relative";
+        slideBox.style.top = "0";
         slideBox.style.width = "339px"
         adjust_size(windowHeight);
         slideBox.style.marginBottom = "30px";
@@ -555,3 +569,13 @@ window.addEventListener("orientationchange", function() {
     }
   }
 }, false);
+
+function is_tablet(){
+  if(!is_mobile()){
+    return false;
+  }
+  if(navigator.userAgent.match(/iPad|Tablet/i)){
+    return true;
+  }
+  return false;
+}
