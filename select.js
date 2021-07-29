@@ -531,26 +531,24 @@ window.addEventListener("orientationchange", function() {
     var slideContainer = document.querySelector('#slideContainer');
     if(slideTab.classList.contains('active')) {
       if(window.orientation == -90 || window.orientation == 90) {
-        //var mobile_height = window.innerWidth;
-        //var slideBox_width = (16 * window.innerWidth)/9;
         document.querySelector('.header').style.display = "none";
         document.querySelector('.info').style.display = "none";
         document.querySelector('.typeTab').style.display = "none";
-        slideBox.style.height = "100vh";//`${window.innerWidth}px`;
+        document.querySelector('body').style.backgroundColor = "#c9c9c9";
         slideBox.style.setProperty('width', 'calc((16 / 9) * 100vh)');
+        slideBox.style.height = "100vh";
         slideBox.style.marginBottom = "0px";
         slideContainer.style.setProperty('width', 'calc(((16 / 9) * 100vh) - 6px)');
         slideContainer.style.setProperty('height', 'calc(100vh - 6px)');
-        //slideBox.classList.add('slideShow');
       }
       else{
         document.querySelector('.header').style.display = "flex";
         document.querySelector('.info').style.display = "flex";
         document.querySelector('.typeTab').style.display = "block";
-        slideBox.classList.remove('slideShow');
-        slideBox.style.marginBottom = "30px";
+        document.querySelector('body').style.backgroundColor = "#FAFBFC";
         slideBox.style.width = "339px"
         adjust_size(windowHeight);
+        slideBox.style.marginBottom = "30px";
         slideContainer.style.width = " 333px";
         slideContainer.style.height = "187.31px";
       }

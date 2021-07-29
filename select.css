@@ -440,6 +440,10 @@ ul {
   display: flex;
   justify-content: center;
   align-items: center;
+  background-color: #ffffff;
+}
+.slide {
+  background-color: #c9c9c9;
 }
 /* #slideContainer img {
   object-fit: cover;
