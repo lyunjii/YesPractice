@@ -62,29 +62,6 @@ window.onload = function (){
   }
   else{
     adjust_size(windowHeight);
-    // window.addEventListener("orientationchange", function() {
-    //   var mobile_height = window.innerHeight;
-    //   var slideTab = document.getElementById('pills-show');
-    //   var showBox = document.querySelector('.slide');
-    //   if(slideTab.classList.contains('active')) {
-    //     if(window.orientation == -90 || window.orientation == 90) {
-    //       document.querySelector('.header').style.display = "none";
-    //       document.querySelector('.info').style.display = "none";
-    //       document.querySelector('.typeTab').style.display = "none";
-    //       showBox.style.marginBottom = "0px";
-    //       showbox.style.width = `${(9 * mobile_height)/16}px`;
-    //       showBox.style.height = `${mobile_height}px`;
-    //     }
-    //     else{
-    //       document.querySelector('.header').style.display = "flex";
-    //       document.querySelector('.info').style.display = "flex";
-    //       document.querySelector('.typeTab').style.display = "block";
-    //       showBox.style.marginBottom = "30px";
-    //       showbox.style.width = "339px";
-    //       showBox.style.height = "440px";
-    //     }
-    //   }
-    // }, false);
   }
 }
 
@@ -546,26 +523,28 @@ function adjust_size(height) {
 window.addEventListener("orientationchange", function() {
   if(is_mobile()) {
     var slideTab = document.getElementById('pills-slide');
-    var showBox = document.querySelector('.slide');
+    var slideBox = document.querySelector('.slide');
+    var slideContainer = document.querySelector('#slideContainer');
     if(slideTab.classList.contains('active')) {
       if(window.orientation == -90 || window.orientation == 90) {
         //var mobile_height = window.innerWidth;
-        //var showBox_width = (16 * window.innerWidth)/9;
+        //var slideBox_width = (16 * window.innerWidth)/9;
         document.querySelector('.header').style.display = "none";
         document.querySelector('.info').style.display = "none";
         document.querySelector('.typeTab').style.display = "none";
-        showBox.style.height = "100vh";//`${window.innerWidth}px`;
-        //showbox.style.width = "calc((16 / 9) * 100vh)";//`${window.innerHeight}px`;
-        showBox.style.setProperty('width', 'calc((16 / 9) * 100vh)');
-        showBox.style.marginBottom = "0px";
-        //showBox.classList.add('slideShow');
+        slideBox.style.height = "100vh";//`${window.innerWidth}px`;
+        slideBox.style.setProperty('width', 'calc((16 / 9) * 100vh)');
+        slideBox.style.marginBottom = "0px";
+        slideContainer.style.setProperty('width', 'calc(((16 / 9) * 100vh) - 6px)');
+        slideContainer.style.setProperty('height', 'calc(100vh - 6px)');
+        //slideBox.classList.add('slideShow');
       }
       else{
         document.querySelector('.header').style.display = "flex";
         document.querySelector('.info').style.display = "flex";
         document.querySelector('.typeTab').style.display = "block";
-        showBox.classList.remove('slideShow');
-        showBox.style.marginBottom = "30px";
+        slideBox.classList.remove('slideShow');
+        slideBox.style.marginBottom = "30px";
         adjust_size(windowHeight);
       }
     }

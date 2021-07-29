@@ -434,6 +434,10 @@ ul {
   text-align: center;
   color: #adafb3;
 }
+#slideContainer {
+  width: 333px;
+  height: 187.31px;
+}
 /* .slideShow {
   width: calc((16 / 9) * 100vh);
   height: 100vh;
