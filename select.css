@@ -434,7 +434,8 @@ ul {
   text-align: center;
   color: #adafb3;
 }
-.slideShow {
+/* .slideShow {
   width: calc((16 / 9) * 100vh);
+  height: 100vh;
   margin-bottom: 0px;
-}
+} */
