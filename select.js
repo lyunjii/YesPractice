@@ -55,6 +55,10 @@ window.onload = function (){
     sendIcon.style.height = "20px";
     sendIcon.style.marginRight = "10.88px";
 
+    var slideContainer = document.querySelector('#slideContainer');
+    slideContainer.style.width = "594px";
+    slideContainer.style.height = "334.125px";
+
     //var cropPointer = document.querySelector('.cropper-point.point-se');
     //cropPointer.style.width = "22px";
     //cropPointer.style.height = "22px";
@@ -545,7 +549,10 @@ window.addEventListener("orientationchange", function() {
         document.querySelector('.typeTab').style.display = "block";
         slideBox.classList.remove('slideShow');
         slideBox.style.marginBottom = "30px";
+        slideBox.style.width = "339px"
         adjust_size(windowHeight);
+        slideContainer.style.width = " 333px";
+        slideContainer.style.height = "187.31px";
       }
     }
   }

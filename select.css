@@ -437,9 +437,10 @@ ul {
 #slideContainer {
   width: 333px;
   height: 187.31px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
-/* .slideShow {
-  width: calc((16 / 9) * 100vh);
-  height: 100vh;
-  margin-bottom: 0px;
+/* #slideContainer img {
+  object-fit: cover;
 } */
