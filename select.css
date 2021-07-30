@@ -1,9 +1,3 @@
-html {
-  -webkit-text-size-adjust: none;
-  text-size-adjust: none;
-}
-/* for blocking zoom in mobile */
-
 @font-face {
   font-family: "NanumSquareRound";
   src: url("https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_two@1.0/NanumSquareRound.woff")
@@ -312,6 +306,7 @@ ul {
   width: 333px;
   height: 434px;
   overflow-y: scroll;
+  scrollbar-width: thin;
 }
 .voteListBox::-webkit-scrollbar {
   display: none;
