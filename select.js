@@ -498,7 +498,7 @@ function toggle_column(btn){
   var voteListBox = document.querySelector('.voteListBox');
   if(btn.getAttribute('value') === '2'){
     btn.setAttribute('value', '1');
-    btn.setAttribute('src', 'img/2row.svg');
+    btn.setAttribute('src', 'img/2row2.svg');
     voteListBox.classList.toggle('pcVote2');
     voteListBox.classList.toggle('pcVote1');
   }
