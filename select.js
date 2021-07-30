@@ -55,6 +55,21 @@ window.onload = function (){
     sendIcon.style.height = "20px";
     sendIcon.style.marginRight = "10.88px";
 
+    
+    var voteListBox = document.querySelector('.voteListBox');
+    voteListBox.classList.remove('mVote');
+    voteListBox.classList.remove('mVote1');
+    voteListBox.classList.add('pcVote');
+    voteListBox.classList.add('pcVote2');
+
+    var toggleCol = document.querySelector('#toggleCol');
+    toggleCol.setAttribute('value', '2');
+    toggleCol.setAttribute('src', 'img/1row.svg');
+    toggleCol.style.top = "7px";
+    toggleCol.style.right = "3px";
+
+    document.querySelector('.orangebox.vote').style.paddingRight = "9px";
+
     var slideContainer = document.querySelector('#slideContainer');
     slideContainer.style.width = "594px";
     slideContainer.style.height = "334.125px";
@@ -480,36 +495,36 @@ function upload_image(){
   reset_image_box();
 }
 
-function vote(){
-  if(!is_mobile()){
-    var voteListBox = document.querySelector('.voteListBox');
-    voteListBox.classList.add('pcVote');
-    voteListBox.classList.add('pcVote2');
-    voteListBox.classList.remove('pcVote1');
-    var btn = document.querySelector('#toggleCol')
-    btn.style.display = "block";
-    btn.setAttribute('value', '2');
-    btn.setAttribute('src', 'img/1row.svg');
-    document.querySelector('.orangebox.vote').style.paddingRight = "9px";
-  }
-}
-
+// 투표 탭 열 전환 버튼
 function toggle_column(btn){
   var voteListBox = document.querySelector('.voteListBox');
   if(btn.getAttribute('value') === '2'){
     btn.setAttribute('value', '1');
     btn.setAttribute('src', 'img/2row2.svg');
-    voteListBox.classList.toggle('pcVote2');
-    voteListBox.classList.toggle('pcVote1');
+    if(is_mobile()){
+      voteListBox.classList.toggle('mVote2');
+      voteListBox.classList.toggle('mVote1');
+    }
+    else{
+      voteListBox.classList.toggle('pcVote2');
+      voteListBox.classList.toggle('pcVote1');
+    }
   }
   else{
     btn.setAttribute('value', '2');
     btn.setAttribute('src', 'img/1row.svg');
-    voteListBox.classList.toggle('pcVote2');
-    voteListBox.classList.toggle('pcVote1');
+    if(is_mobile()){
+      voteListBox.classList.toggle('mVote2');
+      voteListBox.classList.toggle('mVote1');
+    }
+    else{
+      voteListBox.classList.toggle('pcVote2');
+      voteListBox.classList.toggle('pcVote1');
+    }
   }
 }
 
+// 투표, 슬라이드 탭 모바일 높이
 function adjust_size(height) {
   if(is_mobile()){
     if(window.orientation == 0){
@@ -524,6 +539,7 @@ function adjust_size(height) {
   }
 }
 
+// 슬라이드 탭 모바일 회전
 window.addEventListener("orientationchange", function() {
   if(is_mobile()) {
     var slideTab = document.getElementById('pills-slide');

@@ -38,7 +38,7 @@
       </li>
       <li class="nav-item" role="presentation">
         <button class="tabBtn nav-link" id="pills-vote-tab" data-bs-toggle="pill" data-bs-target="#pills-vote" 
-        type="button" role="tab" aria-controls="pills-vote" aria-selected="false" onclick="vote()">
+        type="button" role="tab" aria-controls="pills-vote" aria-selected="false">
           <img class="iconImg" src="img/vote_white.svg" alt="" width="23px" height="23px">
           <span>투표</span>
         </button>
@@ -86,7 +86,7 @@
     </div>
     <div class="tab-pane" id="pills-vote" role="tabpanel" aria-labelledby="pills-vote-tab">
       <section class="orangebox vote">
-        <div class="voteListBox">
+        <div class="voteListBox mVote mVote1">
           <ul class="voteList" id="voteList">
             <li class="voteElement">
               <img class="voteImage" src="img/toni-tan-unsplash.jpg" alt="">
@@ -181,11 +181,10 @@
               <label class="form-check-label" for="image_vote">
               <input class="form-check-input shadow-none" type="checkbox" value="" id="image_vote">
             </li>
-
           </ul>
+          <img id="toggleCol" src="img/2row2.svg" alt="" value="1" onclick="toggle_column(this)">
         </div>
-        <img id="toggleCol" src="img/1row.svg" alt="" value="2" onclick="toggle_column(this)">
-      </section>
+        </section>
     </div>
     <div class="tab-pane" id="pills-slide" role="tabpanel" aria-labelledby="pills-slide-tab">
       <section class="orangebox slide">

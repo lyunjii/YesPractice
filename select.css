@@ -244,31 +244,6 @@ ul {
   top: 320px;
 }
 /*   vote   */
-.voteImage {
-  width: 331px;
-  height: 186px;
-}
-.image_user {
-  width: 37px;
-  height: 37px;
-  border-radius: 50%;
-  margin-right: 4px;
-}
-.image_comment {
-  font-size: 12px;
-  font-weight: lighter;
-}
-.image_name {
-  font-size: 10px;
-  font-weight: lighter;
-}
-.imageInfo {
-  height: 58px;
-  display: flex;
-  align-items: center;
-  padding: 5px 9px;
-  border-top: #707070 1px solid;
-}
 .voteScroll {
   width: 100%;
   height: 100%;
@@ -289,18 +264,16 @@ ul {
   background-color: #ff8836;
   border-color: #ff8836;
 }
-.voteElement {
-  width: 333px;
-  height: 244px;
-  border-right: #707070 1px solid;
-  border-bottom: #707070 1px solid;
-  position: relative;
+.voteListBox::-webkit-scrollbar {
+  display: none;
 }
-.voteList {
-  display: flex;
-  flex-flow: wrap;
-  border-top: #707070 1px solid;
-  border-left: #707070 1px solid;
+#toggleCol {
+  width: 32px;
+  height: 32px;
+  position: absolute;
+  top: 6px;
+  right: 6px;
+  cursor: pointer;
 }
 .voteListBox {
   width: 333px;
@@ -308,17 +281,60 @@ ul {
   overflow-y: scroll;
   scrollbar-width: thin;
 }
-.voteListBox::-webkit-scrollbar {
-  display: none;
+.voteList {
+  display: flex;
+  flex-flow: wrap;
+  border-top: #707070 1px solid;
+  border-left: #707070 1px solid;
+  margin: 0px;
 }
-#toggleCol {
-  display: none;
-  width: 32px;
-  height: 32px;
-  position: absolute;
-  top: 7px;
-  right: 3px;
-  cursor: pointer;
+.image_comment {
+  font-size: 12px;
+  font-weight: lighter;
+}
+.image_name {
+  font-size: 10px;
+  font-weight: lighter;
+}
+.voteImage {
+  width: 331px;
+  height: 186px;
+}
+.image_user {
+  width: 37px;
+  height: 37px;
+  border-radius: 50%;
+  margin-right: 4px;
+}
+.imageInfo {
+  height: 58px;
+  display: flex;
+  align-items: center;
+  padding: 5px 9px;
+  border-top: #707070 1px solid;
+}
+.voteElement {
+  width: 333px;
+  height: 244px;
+  border-right: #707070 1px solid;
+  border-bottom: #707070 1px solid;
+  position: relative;
+}
+/*  vote mobile column 1  */
+.mVote2 .voteImage {
+  width: 165px;
+  height: 94px;
+}
+.mVote2 .image_user {
+  width: 21px;
+  height: 21px;
+}
+.mVote2 .imageInfo {
+  height: 36px;
+}
+.mVote2 .voteElement {
+  width: 166px;
+  height: 130px;
 }
 /*  vote pc column 2  */
 .pcVote2 .voteImage {
@@ -401,26 +417,6 @@ ul {
 .pcVote::-webkit-scrollbar-button:vertical:start:increment,
 .pcVote::-webkit-scrollbar-button:vertical:end:decrement {
   display: none;
-}
-
-/* pinch event styling */
-.voteList.zoom {
-  margin: 0px;
-}
-.voteList.zoom > .voteElement {
-  width: 166px;
-  height: 130px;
-}
-.voteList.zoom > .voteElement > .voteImage {
-  width: 165px;
-  height: 94px;
-}
-.voteList.zoom > .voteElement > .imageInfo {
-  height: 36px;
-}
-.voteList.zoom > .voteElement > .imageInfo > .image_user {
-  width: 21px;
-  height: 21px;
 }
 
 /*   slide text   */
