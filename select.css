@@ -439,7 +439,7 @@ ul {
 .slide {
   background-color: #c9c9c9;
 }
-@media screen and (orientation: portrait) {
+/* @media screen and (orientation: portrait) {
   .header,
   .info {
     display: flex;
@@ -482,7 +482,7 @@ ul {
     height: calc(100vh - 6px);
   }
 }
-@media screen and (orientation: landscape) and (min-width: 768px) {
+@media screen and (orientation: landscape) and (min-width: 1024px) {
   .header,
   .info,
   .typeTab {
@@ -504,4 +504,4 @@ ul {
     width: calc(100vw - 6px);
     height: calc(((9 / 16) * 100vw) - 6px);
   }
-}
+} */
