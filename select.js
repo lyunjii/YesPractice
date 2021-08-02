@@ -125,13 +125,16 @@ function load_image(input){
 /*
   if(parent.sunny == null  || !parent.sunny.is_ready_for_everything())
   {
+    parent.sunny_modal.show_alert_only("not ready yet",false);
+    return;
     alert("not ready yet");
     return;
   }
   
   if(!parent.sunny.is_coordinator_collecting())
   {
-    alert("coordinator is not collecting image or video");
+    //alert("coordinator is not collecting image or video");
+    parent.sunny_modal.show_alert_only("coordinator is not collecting",false);
     return;
 
   }
@@ -409,6 +412,8 @@ function upload_image(){
   var msg = msgBox.value.trim();
   console.log(msg);
   if(msg == null || msg == ""){
+    parent.sunny_modal.show_alert_only("메시지를 입력하세요",false);
+    return;
     alert("메시지를 입력하세요");
     return;
   }
@@ -418,6 +423,8 @@ function upload_image(){
     {
       //영역을 선택하지 않았을 때
       if(newCanvas == null){
+        parent.sunny_modal.show_alert_only("영역을 선택하세요",false);
+        return;
         alert("영역을 선택하세요");
         return;
       }
