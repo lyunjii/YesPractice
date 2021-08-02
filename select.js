@@ -527,7 +527,7 @@ window.addEventListener('resize', function () {
       document.querySelector('.typeTab').style.display = "none";
       document.querySelector('body').style.backgroundColor = "#c9c9c9";
       slideBox.style.marginBottom = "0px";
-      if(is_tablet() || window.innerWidth > "767px"){
+      if(window.matchMedia('(min-width: 768px)').matches || is_tablet()){
         slideBox.style.position = "absolute";
         slideBox.style.setProperty('top', 'calc((100vh - ((9 / 16) * 100vw))/2)');
         slideBox.style.setProperty('left', '0');
