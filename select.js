@@ -555,6 +555,7 @@ window.addEventListener("orientationchange", function() {
         if(!is_tablet()){
           slideBox.style.setProperty('width', 'calc((16 / 9) * 100vh)');
           slideBox.style.height = "100vh";
+          slideBox.style.maxHeight = "100vh";
           slideContainer.style.setProperty('width', 'calc(((16 / 9) * 100vh) - 6px)');
           slideContainer.style.setProperty('height', 'calc(100vh - 6px)');
         }
@@ -563,6 +564,7 @@ window.addEventListener("orientationchange", function() {
           slideBox.style.setProperty('top', 'calc((100vh - ((9 / 16) * 100vw))/2)');
           slideBox.style.setProperty('left', '0');
           slideBox.style.setProperty('width', '100vw');
+          slideBox.style.setProperty('maxWidth', '100vw');
           slideBox.style.setProperty('height', 'calc((9 / 16) * 100vw)');
           slideContainer.style.setProperty('width', 'calc(100vw - 6px)');
           slideContainer.style.setProperty('height', 'calc(((9 / 16) * 100vw) - 6px)');
