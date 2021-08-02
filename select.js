@@ -552,6 +552,7 @@ window.addEventListener("orientationchange", function() {
         document.querySelector('.typeTab').style.display = "none";
         document.querySelector('body').style.backgroundColor = "#c9c9c9";
         slideBox.style.marginBottom = "0px";
+        $('meta[name=viewport]').attr('content','"width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no"');
         if(!is_tablet()){
           slideBox.style.setProperty('width', 'calc((16 / 9) * 100vh)');
           slideBox.style.height = "100vh";
@@ -568,8 +569,7 @@ window.addEventListener("orientationchange", function() {
           slideBox.style.setProperty('height', 'calc((9 / 16) * 100vw)');
           slideContainer.style.setProperty('width', 'calc(100vw - 6px)');
           slideContainer.style.setProperty('height', 'calc(((9 / 16) * 100vw) - 6px)');
-        }
-        $('meta[name=viewport]').attr('content','"width=device-width, initial-scale=1.0"');
+        }      
       }
       else{
         document.querySelector('.header').style.display = "flex";
