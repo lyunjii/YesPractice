@@ -567,6 +567,7 @@ window.addEventListener("orientationchange", function() {
           slideContainer.style.setProperty('width', 'calc(100vw - 6px)');
           slideContainer.style.setProperty('height', 'calc(((9 / 16) * 100vw) - 6px)');
         }
+        $('meta[name=viewport]').attr('content','"width=device-width, initial-scale=1.0"');
       }
       else{
         document.querySelector('.header').style.display = "flex";
