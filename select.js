@@ -518,8 +518,7 @@ function adjust_size(height) {
 
 // 슬라이드 탭 모바일 회전
 window.addEventListener('resize', function () {
-	if(is_mobile() && slideTab.classList.contains('active')) {
-    var slideTab = document.getElementById('pills-slide');
+	if(is_mobile() && document.getElementById('pills-slide').classList.contains('active')) {
     var slideBox = document.querySelector('.slide');
     var slideContainer = document.querySelector('#slideContainer');
     if(window.matchMedia('(orientation: landscape)').matches){
@@ -528,7 +527,7 @@ window.addEventListener('resize', function () {
       document.querySelector('.typeTab').style.display = "none";
       document.querySelector('body').style.backgroundColor = "#c9c9c9";
       slideBox.style.marginBottom = "0px";
-      if(is_tablet() || window.matchMedia('(min-width: 768px)').matches){
+      if(is_tablet() || window.innerWidth > "767px"){
         slideBox.style.position = "absolute";
         slideBox.style.setProperty('top', 'calc((100vh - ((9 / 16) * 100vw))/2)');
         slideBox.style.setProperty('left', '0');
