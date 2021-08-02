@@ -555,7 +555,7 @@ window.addEventListener('resize', function () {
       slideBox.style.position = "relative";
       slideBox.style.top = "0";
       slideBox.style.width = "339px"
-      adjust_size(windowHeight);
+      adjust_size(Math.max(windowWidth, windowHeight));
       slideBox.style.marginBottom = "30px";
       slideContainer.style.width = " 333px";
       slideContainer.style.height = "187.31px";
