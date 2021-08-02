@@ -114,8 +114,6 @@ var cropper;
 var newCanvas = null; //자른 이미지 놓을 canvas
 var croppedCanvas = null;
 var originalImage;
-// var original_image_file = null;
-// var original_src = null;
 
 var commands = [];  //버튼 명령을 저장하는 배열
 var rotateCount = 0;  //원본 이미지를 회전 정보
@@ -451,8 +449,6 @@ function upload_image(){
 
     else
     {
-      //위 if문 안의 코드 참고해서 작성했습니다
-      //크롭이미지 캔버스 자리에 회전시킨 원본을 그린 캔버스를 작성했습니다
       var thumbnailCanvas = document.getElementById("thumbnail");
       var tbumbnailContext = thumbnailCanvas.getContext("2d");
 
@@ -466,33 +462,7 @@ function upload_image(){
 
       
       parent.sunny.uploadToGD_base64(thumbnailData,msg,rotateOriginal().toDataURL("image/PNG",1),"image");
-
-      //parent. document.getElementById("sunny_spinner").classList.remove("d-none");
-      /*
-      {
-
-        parent.sunny.send_orginal_image_v2("audience_photo",original_image_file,"Canvas1","Canvas2",msg,function(org_canvas){
-
-        var thumbnailCanvas = document.getElementById("thumbnail");
-        var tbumbnailContext = thumbnailCanvas.getContext("2d");
-  
-        thumbnailCanvas.width = "343";
-        thumbnailCanvas.height = "191";
-        tbumbnailContext.clearRect(0, 0, thumbnailCanvas.width, thumbnailCanvas.height);
-        
-        
-        tbumbnailContext.drawImage(org_canvas, 0, 0, 343, 191);
-        var thumbnailData = thumbnailCanvas.toDataURL("image/jpeg",0.7);
-        //console.log(thumbnailData);
-
-        
-        parent.sunny.uploadToGD_base64(thumbnailData,msg,org_canvas.toDataURL("image/PNG",1),"image");
-      });
-
     }
-    */
-    
-  }
   }
   catch(err)
   {
@@ -547,58 +517,49 @@ function adjust_size(height) {
 }
 
 // 슬라이드 탭 모바일 회전
-// window.addEventListener("orientationchange", function() {
-  
-// }, false);
-
 window.addEventListener('resize', function () {
-	if(is_mobile()) {
+	if(is_mobile() && slideTab.classList.contains('active')) {
     var slideTab = document.getElementById('pills-slide');
     var slideBox = document.querySelector('.slide');
     var slideContainer = document.querySelector('#slideContainer');
-    if(slideTab.classList.contains('active')) {
-      if(window.matchMedia('(orientation: landscape)').matches){
-        document.querySelector('.header').style.display = "none";
-        document.querySelector('.info').style.display = "none";
-        document.querySelector('.typeTab').style.display = "none";
-        document.querySelector('body').style.backgroundColor = "#c9c9c9";
-        slideBox.style.marginBottom = "0px";
-        if(!is_tablet()){
-          slideBox.style.setProperty('width', 'calc((16 / 9) * 100vh)');
-          slideBox.style.setProperty('maxWidth', 'calc((16 / 9) * 100vh)');
-          slideBox.style.height = "100vh";
-          slideBox.style.maxHeight = "100vh";
-          slideContainer.style.setProperty('width', 'calc(((16 / 9) * 100vh) - 6px)');
-          slideContainer.style.setProperty('height', 'calc(100vh - 6px)');
-        }
-        else{
-          slideBox.style.position = "absolute";
-          slideBox.style.setProperty('top', 'calc((100vh - ((9 / 16) * 100vw))/2)');
-          slideBox.style.setProperty('left', '0');
-          slideBox.style.setProperty('width', '100vw');
-          slideBox.style.setProperty('maxWidth', '100vw');
-          slideBox.style.setProperty('height', 'calc((9 / 16) * 100vw)');
-          slideBox.style.setProperty('maxHeight', 'calc((9 / 16) * 100vw)');
-          slideContainer.style.setProperty('width', 'calc(100vw - 6px)');
-          slideContainer.style.setProperty('height', 'calc(((9 / 16) * 100vw) - 6px)');
-        }   
+    if(window.matchMedia('(orientation: landscape)').matches){
+      document.querySelector('.header').style.display = "none";
+      document.querySelector('.info').style.display = "none";
+      document.querySelector('.typeTab').style.display = "none";
+      document.querySelector('body').style.backgroundColor = "#c9c9c9";
+      slideBox.style.marginBottom = "0px";
+      if(is_tablet() || window.matchMedia('(min-width: 768px)').matches){
+        slideBox.style.position = "absolute";
+        slideBox.style.setProperty('top', 'calc((100vh - ((9 / 16) * 100vw))/2)');
+        slideBox.style.setProperty('left', '0');
+        slideBox.style.setProperty('width', '100vw');
+        slideBox.style.setProperty('maxWidth', '100vw');
+        slideBox.style.setProperty('height', 'calc((9 / 16) * 100vw)');
+        slideBox.style.setProperty('maxHeight', 'calc((9 / 16) * 100vw)');
+        slideContainer.style.setProperty('width', 'calc(100vw - 6px)');
+        slideContainer.style.setProperty('height', 'calc(((9 / 16) * 100vw) - 6px)');
       }
-      // if(window.orientation == -90 || window.orientation == 90) {
-           
-      // }
       else{
-        document.querySelector('.header').style.display = "flex";
-        document.querySelector('.info').style.display = "flex";
-        document.querySelector('.typeTab').style.display = "block";
-        document.querySelector('body').style.backgroundColor = "#FAFBFC";
-        slideBox.style.position = "relative";
-        slideBox.style.top = "0";
-        slideBox.style.width = "339px"
-        adjust_size(windowHeight);
-        slideBox.style.marginBottom = "30px";
-        slideContainer.style.width = " 333px";
-        slideContainer.style.height = "187.31px";
-      }
+        slideBox.style.setProperty('width', 'calc((16 / 9) * 100vh)');
+        slideBox.style.setProperty('maxWidth', 'calc((16 / 9) * 100vh)');
+        slideBox.style.height = "100vh";
+        slideBox.style.maxHeight = "100vh";
+        slideContainer.style.setProperty('width', 'calc(((16 / 9) * 100vh) - 6px)');
+        slideContainer.style.setProperty('height', 'calc(100vh - 6px)');
+      }   
+    }
+    else{
+      document.querySelector('.header').style.display = "flex";
+      document.querySelector('.info').style.display = "flex";
+      document.querySelector('.typeTab').style.display = "block";
+      document.querySelector('body').style.backgroundColor = "#FAFBFC";
+      slideBox.style.position = "relative";
+      slideBox.style.top = "0";
+      slideBox.style.width = "339px"
+      adjust_size(windowHeight);
+      slideBox.style.marginBottom = "30px";
+      slideContainer.style.width = " 333px";
+      slideContainer.style.height = "187.31px";
     }
   }
 });
@@ -610,8 +571,5 @@ function is_tablet(){
   if(/iPad|Tablet/i.test(navigator.userAgent) ) {
     return true;
   }
-  // if(navigator.userAgent.match(/iPad|Tablet/i)){
-  //   return true;
-  // }
   return false;
 }
